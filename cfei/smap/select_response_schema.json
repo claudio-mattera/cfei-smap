@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "uuid": {
+            "type": "string",
+            "minLength": 36,
+            "maxLength": 36,
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+        },
+        "timestamp": {
+            "type": "number"
+        }
+    },
+    "type": "array",
+    "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["uuid"],
+        "properties": {
+            "uuid": {
+                "$ref": "#/definitions/uuid"
+            },
+            "Readings": {
+                "type": "array",
+                "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "additionalItems": false,
+                    "items": [
+                        {
+                            "$ref": "#/definitions/timestamp"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ]
+                }
+            },
+            "Metadata": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                    "SourceName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Path": {
+                "type": "string"
+            },
+            "Properties": {
+                "type": "object"
+            }
+        }
+    }
+}
