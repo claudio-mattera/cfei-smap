@@ -4,6 +4,8 @@ CFEI sMAP Python Library
 This is a Python 3 library to interface to [sMAP] archivers.
 It uses the [asyncio] framework to connect to the archiver, and it returns [pandas] data-frames and time-series.
 
+Documentation available at https://sdu-cfei.github.io/cfei-smap/
+
 
 Features
 ----
