@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Converting to and from Timezones &mdash; CFEI sMAP Python Library 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CFEI sMAP Python Library 1.2.0 documentation" href="index.html"/>
+        <link rel="next" title="Internals" href="internals.html"/>
+        <link rel="prev" title="Reference" href="reference.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CFEI sMAP Python Library
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="library.html">CFEI sMAP Python Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="library.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="library.html#general-instructions">General Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#important-note-about-timezones">Important Note about Timezones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#fetching-data">Fetching Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="library.html#note">Note</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#posting-data">Posting Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#subscribing-to-real-time-data">Subscribing to real-time data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#enabling-local-cache">Enabling Local Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#note-about-asyncio">Note about <em>asyncio</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#command-line-utility">Command Line Utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap">Reference for <code class="code docutils literal"><span class="pre">cfei.smap</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.types">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.types</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.transport">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.transport.aiohttp">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport.aiohttp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.cache">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.cache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Converting to and from Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internals.html">Internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#caching">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#schema-validation">Schema Validation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CFEI sMAP Python Library</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Converting to and from Timezones</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/timezones.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="converting-to-and-from-timezones">
+<span id="timezones"></span><h1>Converting to and from Timezones<a class="headerlink" href="#converting-to-and-from-timezones" title="Permalink to this headline">¶</a></h1>
+<p>The following code shows how to convert between localtime and UTC, query an sMAP server for data, and display the resulting time-series.</p>
+<p>This examples shows occupancy data, which has dynamics in localtime.
+I.e., people arrive on-site around seven in the morning, and leave around three in the afternoon.
+Assuming the current timezone is Europe/Copenhagen, people arrive on-site around 06:00 UTC and leave around 14:00 UTC.
+However, it can be useful to access the time-series with a localtime index, for instance for plotting, or for using the time-series with programs that do not support time-zones.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="kn">import</span> <span class="nn">pytz</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="kn">as</span> <span class="nn">mdates</span>
+
+<span class="kn">from</span> <span class="nn">cfei.smap</span> <span class="kn">import</span> <span class="n">SmapAiohttpInterface</span>
+
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">hours</span> <span class="o">=</span> <span class="n">mdates</span><span class="o">.</span><span class="n">HourLocator</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">smap</span> <span class="o">=</span> <span class="n">SmapAiohttpInterface</span><span class="p">(</span><span class="s2">&quot;http://hostname:8079&quot;</span><span class="p">)</span>
+
+    <span class="c1"># This is localtime naive, i.e., there is no information about timezone.</span>
+    <span class="n">timezone_naive_local_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="c1"># 2018-02-06T04:00:00</span>
+
+    <span class="c1"># This creates a timezone object to represent the desired timezone.</span>
+    <span class="n">timezone</span> <span class="o">=</span> <span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s2">&quot;Europe/Copenhagen&quot;</span><span class="p">)</span>
+
+    <span class="c1"># This converts the timezone-naive datetime to a timezone-aware datetime.</span>
+    <span class="c1"># This is still localtime, but it carries information about the timezone.</span>
+    <span class="n">timezone_aware_local_datetime</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">localize</span><span class="p">(</span><span class="n">timezone_naive_local_datetime</span><span class="p">)</span>
+    <span class="c1"># 2018-02-06T04:00:00+01:00</span>
+
+    <span class="c1"># This converts the localtime to UTC.</span>
+    <span class="c1"># It is necessary because comparisons between datetimes with different</span>
+    <span class="c1"># timezones is not supported in Python and pandas.</span>
+    <span class="n">timezone_aware_utc_datetime</span> <span class="o">=</span> <span class="n">timezone_aware_local_datetime</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">pytz</span><span class="o">.</span><span class="n">UTC</span><span class="p">)</span>
+    <span class="c1"># 2018-02-06T03:00:00Z</span>
+
+    <span class="c1"># A UTC timezone-aware datetime can be used with this library.</span>
+    <span class="n">readings</span> <span class="o">=</span> <span class="n">await</span> <span class="n">smap</span><span class="o">.</span><span class="n">fetch_readings_intertwined</span><span class="p">(</span>
+        <span class="n">timezone_aware_utc_datetime</span><span class="p">,</span>
+        <span class="n">timezone_aware_utc_datetime</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">14</span><span class="p">),</span>
+        <span class="s2">&quot;uuid = &#39;12345678-1234-1234-1234-123412341234&#39;&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># The resulting time-series have always their index in UTC.</span>
+    <span class="n">timezone_aware_utc_index</span> <span class="o">=</span> <span class="n">readings</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="c1"># Most time-series processing can be done in UTC, but sometimes it may</span>
+    <span class="c1"># be necessary to convert it to localtime.</span>
+    <span class="c1"># This is localtime but it still carries information about the timezone.</span>
+    <span class="n">timezone_aware_localtime_index</span> <span class="o">=</span> <span class="n">timezone_aware_utc_index</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">timezone</span><span class="p">)</span>
+
+    <span class="c1"># And occasionally it may be necessary to drop the timezone information</span>
+    <span class="c1"># entirely.</span>
+    <span class="c1"># These situations are critical and must be carefully handled.</span>
+
+    <span class="c1"># First the index is converted to localtime, and then its timezone is set</span>
+    <span class="c1"># to None.</span>
+    <span class="n">timezone_naive_localtime_index</span> <span class="o">=</span> <span class="n">timezone_aware_localtime_index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+
+    <span class="n">figure</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Timezone-aware UTC index&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">timezone_aware_utc_index</span><span class="p">,</span> <span class="n">readings</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">hours</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span>
+        <span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M</span><span class="se">\n</span><span class="s2">%z&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">timezone_aware_utc_index</span><span class="o">.</span><span class="n">tz</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Timezone-aware localtime index&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">timezone_aware_localtime_index</span><span class="p">,</span> <span class="n">readings</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">hours</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span>
+        <span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M</span><span class="se">\n</span><span class="s2">%z&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">timezone_aware_localtime_index</span><span class="o">.</span><span class="n">tz</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Timezone-naive index&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">timezone_naive_localtime_index</span><span class="p">,</span> <span class="n">readings</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">hours</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M</span><span class="se">\n</span><span class="s2">%z&quot;</span><span class="p">))</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">figure</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The generated plot is shown in <a class="reference internal" href="#label"><span class="std std-numref">Fig. 1</span></a>.
+The first time-series is rising at 06:00+0000, and the second one is rising at 07:00+0100, which are indeed the same instant in two different timezones.
+The third time-series is instead rising at 07:00, which is ambiguous.
+However, this time-series can be processed by other programs that do not support timezones.
+It is responsibility of the user to properly manage the timezone information for the rest of the pipeline.</p>
+<div class="figure align-center" id="id1">
+<span id="label"></span><a class="reference internal image-reference" href="_images/timezones.svg"><img alt="alternate text" src="_images/timezones.svg" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The same time-series with three different indices: one in UTC, one in the local timezone, and one without timezone</span></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="internals.html" class="btn btn-neutral float-right" title="Internals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="reference.html" class="btn btn-neutral" title="Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Center for Energy Informatics, University of Southern Denmark.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

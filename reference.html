@@ -1,0 +1,1407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reference &mdash; CFEI sMAP Python Library 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CFEI sMAP Python Library 1.2.0 documentation" href="index.html"/>
+        <link rel="next" title="Converting to and from Timezones" href="timezones.html"/>
+        <link rel="prev" title="CFEI sMAP Python Library" href="library.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CFEI sMAP Python Library
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="library.html">CFEI sMAP Python Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="library.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="library.html#general-instructions">General Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#important-note-about-timezones">Important Note about Timezones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#fetching-data">Fetching Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="library.html#note">Note</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#posting-data">Posting Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#subscribing-to-real-time-data">Subscribing to real-time data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#enabling-local-cache">Enabling Local Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#note-about-asyncio">Note about <em>asyncio</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#command-line-utility">Command Line Utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-cfei.smap">Reference for <code class="code docutils literal"><span class="pre">cfei.smap</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cfei.smap.types">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.types</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cfei.smap.transport">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cfei.smap.transport.aiohttp">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport.aiohttp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cfei.smap.cache">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.cache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Converting to and from Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internals.html">Internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#caching">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#schema-validation">Schema Validation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CFEI sMAP Python Library</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/reference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-cfei.smap">
+<span id="reference-for-cfei-smap"></span><h2>Reference for <code class="code docutils literal"><span class="pre">cfei.smap</span></code><a class="headerlink" href="#module-cfei.smap" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cfei.smap.SmapAiohttpInterface">
+<em class="property">class </em><code class="descclassname">cfei.smap.</code><code class="descname">SmapAiohttpInterface</code><span class="sig-paren">(</span><em>url: str</em>, <em>key: str = ''</em>, <em>encoding: str = 'utf-8'</em>, <em>buffer_size: int = 65536</em>, <em>max_concurrent_requests: int = 10</em>, <em>cache: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cfei.smap.SmapInterface" title="cfei.smap.SmapInterface"><code class="xref py py-class docutils literal"><span class="pre">cfei.smap.SmapInterface</span></code></a></p>
+<p>An interface to sMAP protocol over HTTP.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.1.</span></p>
+</div>
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.fetch_everything">
+<code class="descname">fetch_everything</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.fetch_everything" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for everything.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return everything.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; metadata.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, everything)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.fetch_latest_readings">
+<code class="descname">fetch_latest_readings</code><span class="sig-paren">(</span><em>where: str</em>, <em>limit: int = 1</em>, <em>streamlimit: int = 10000</em>, <em>instant: typing.Union[datetime.datetime</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, pandas.core.series.Series]<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.fetch_latest_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return by UUID.</p>
+<p>Query the sMAP archiver for all the readings before current or
+specified instant for all streams that satisfy the <cite>where</cite> condition.
+The results are returned by UUID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+<li><strong>instant</strong> (<em>datetime</em>) – Instant (if <cite>None</cite>, current instant is used)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mapping UUID -&gt; values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict(UUID, pd.Series)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.fetch_metadata">
+<code class="descname">fetch_metadata</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.fetch_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for metadata.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their metadata.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; metadata.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, object)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.fetch_properties">
+<code class="descname">fetch_properties</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.fetch_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for properties.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; properties.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, object)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.fetch_raw">
+<code class="descname">fetch_raw</code><span class="sig-paren">(</span><em>query: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.fetch_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for raw query.</p>
+<p>Query the sMAP archiver using a custom query and return.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Raw query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Parsed JSON output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Any</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.fetch_readings">
+<code class="descname">fetch_readings</code><span class="sig-paren">(</span><em>start: datetime.datetime</em>, <em>end: datetime.datetime</em>, <em>where: str</em>, <em>limit: int = -1</em>, <em>streamlimit: int = 10000</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, pandas.core.series.Series]<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.fetch_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return by UUID.</p>
+<p>Query the sMAP archiver for all readings between <cite>start</cite> and <cite>end</cite> for
+all streams that satisfy the <cite>where</cite> condition. The results are
+returned by UUID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime</em>) – Query start time.</li>
+<li><strong>end</strong> (<em>datetime</em>) – Query end time.</li>
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mapping UUID -&gt; values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict(UUID, pd.Series)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When <code class="code docutils literal"><span class="pre">limit</span></code> is equal to -1 the returned
+streams are actually limited to one million readings (possibly
+depending on the server implementation). Using a higher value for
+<code class="code docutils literal"><span class="pre">limit</span></code> works correctly.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.fetch_readings_intertwined">
+<code class="descname">fetch_readings_intertwined</code><span class="sig-paren">(</span><em>start: datetime.datetime</em>, <em>end: datetime.datetime</em>, <em>where: str</em>, <em>limit: int = -1</em>, <em>streamlimit: int = 10000</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.fetch_readings_intertwined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return a single stream.</p>
+<p>Query the sMAP archiver for all readings between <cite>start</cite> and <cite>end</cite> for
+all streams that satisfy the <cite>where</cite> condition. The results are
+intertwined.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime</em>) – Query start time.</li>
+<li><strong>end</strong> (<em>datetime</em>) – Query end time.</li>
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Intertwined series.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.Series</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When <code class="code docutils literal"><span class="pre">limit</span></code> is equal to -1 the returned
+streams are actually limited to one million readings (possibly
+depending on the server implementation). Using a higher value for
+<code class="code docutils literal"><span class="pre">limit</span></code> works correctly.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.fetch_uuids">
+<code class="descname">fetch_uuids</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Set[uuid.UUID]<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.fetch_uuids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for UUIDs.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their UUIDs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The UUIDs.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set(UUID)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.post_data">
+<code class="descname">post_data</code><span class="sig-paren">(</span><em>stream: pandas.core.series.Series</em>, <em>uuid: uuid.UUID</em>, <em>source_name: str</em>, <em>path: str</em>, <em>metadata: typing.Union[typing.Dict</em>, <em>NoneType] = None</em>, <em>properties: typing.Union[typing.Dict</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.post_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post new readings to a stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>streams</strong> (<em>pd.Series</em>) – New readings.</li>
+<li><strong>uuid</strong> (<em>UUID</em>) – Stream’s UUID.</li>
+<li><strong>source_name</strong> (<em>str</em>) – Stream’s source name.</li>
+<li><strong>path</strong> (<em>str</em>) – Stream’s path.</li>
+<li><strong>metadata</strong> (<em>dict</em>) – Stream’s metadata</li>
+<li><strong>properties</strong> (<em>dict</em>) – Stream’s properties</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.post_readings">
+<code class="descname">post_readings</code><span class="sig-paren">(</span><em>readings: typing.Union[typing.Dict[uuid.UUID, pandas.core.series.Series], typing.Tuple[uuid.UUID, pandas.core.series.Series]]</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.post_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post new readings to existing streams.</p>
+<p>The specified streams’ paths will be fetched and cached before posting
+the readings. All streams must, therefore, exist beforehand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>readings</strong> (<em>dict|pd.Series</em>) – Either a dictionary {UUID: series} or a pair (UUID, pd.Series).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapAiohttpInterface.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>where: typing.Union[str, NoneType], callback: typing.Callable[[uuid.UUID, pandas.core.series.Series], typing.Awaitable[NoneType]], timeout: int = 30</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapAiohttpInterface.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to sMAP republish interface.</p>
+<p>The callback function will be called with new readings as soon as the
+archiver will republish them.</p>
+<p>Args:
+:param where: Query text.
+:type where: str
+:param callback: Callback to process new readings.
+:type callback: SeriesCallbackType
+:param timeout: Connection timeout in seconds.
+:type timeout: int</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cfei.smap.SmapHttpInterface">
+<em class="property">class </em><code class="descclassname">cfei.smap.</code><code class="descname">SmapHttpInterface</code><span class="sig-paren">(</span><em>url: str</em>, <em>key: str = ''</em>, <em>encoding: str = 'utf-8'</em>, <em>buffer_size: int = 65536</em>, <em>max_concurrent_requests: int = 10</em>, <em>cache: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapHttpInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cfei.smap.SmapInterface" title="cfei.smap.SmapInterface"><code class="xref py py-class docutils literal"><span class="pre">cfei.smap.SmapInterface</span></code></a></p>
+<p>An interface to sMAP protocol over HTTP.</p>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 1.1: </span>Use <a class="reference internal" href="#cfei.smap.SmapAiohttpInterface" title="cfei.smap.SmapAiohttpInterface"><code class="xref py py-class docutils literal"><span class="pre">SmapAiohttpInterface</span></code></a> instead.</p>
+</div>
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.fetch_everything">
+<code class="descname">fetch_everything</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapHttpInterface.fetch_everything" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for everything.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return everything.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; metadata.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, everything)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.fetch_latest_readings">
+<code class="descname">fetch_latest_readings</code><span class="sig-paren">(</span><em>where: str</em>, <em>limit: int = 1</em>, <em>streamlimit: int = 10000</em>, <em>instant: typing.Union[datetime.datetime</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, pandas.core.series.Series]<a class="headerlink" href="#cfei.smap.SmapHttpInterface.fetch_latest_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return by UUID.</p>
+<p>Query the sMAP archiver for all the readings before current or
+specified instant for all streams that satisfy the <cite>where</cite> condition.
+The results are returned by UUID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+<li><strong>instant</strong> (<em>datetime</em>) – Instant (if <cite>None</cite>, current instant is used)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mapping UUID -&gt; values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict(UUID, pd.Series)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.fetch_metadata">
+<code class="descname">fetch_metadata</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapHttpInterface.fetch_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for metadata.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their metadata.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; metadata.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, object)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.fetch_properties">
+<code class="descname">fetch_properties</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapHttpInterface.fetch_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for properties.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; properties.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, object)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.fetch_raw">
+<code class="descname">fetch_raw</code><span class="sig-paren">(</span><em>query: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#cfei.smap.SmapHttpInterface.fetch_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for raw query.</p>
+<p>Query the sMAP archiver using a custom query and return.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Raw query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Parsed JSON output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Any</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.fetch_readings">
+<code class="descname">fetch_readings</code><span class="sig-paren">(</span><em>start: datetime.datetime</em>, <em>end: datetime.datetime</em>, <em>where: str</em>, <em>limit: int = -1</em>, <em>streamlimit: int = 10000</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, pandas.core.series.Series]<a class="headerlink" href="#cfei.smap.SmapHttpInterface.fetch_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return by UUID.</p>
+<p>Query the sMAP archiver for all readings between <cite>start</cite> and <cite>end</cite> for
+all streams that satisfy the <cite>where</cite> condition. The results are
+returned by UUID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime</em>) – Query start time.</li>
+<li><strong>end</strong> (<em>datetime</em>) – Query end time.</li>
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mapping UUID -&gt; values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict(UUID, pd.Series)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When <code class="code docutils literal"><span class="pre">limit</span></code> is equal to -1 the returned
+streams are actually limited to one million readings (possibly
+depending on the server implementation). Using a higher value for
+<code class="code docutils literal"><span class="pre">limit</span></code> works correctly.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.fetch_readings_intertwined">
+<code class="descname">fetch_readings_intertwined</code><span class="sig-paren">(</span><em>start: datetime.datetime</em>, <em>end: datetime.datetime</em>, <em>where: str</em>, <em>limit: int = -1</em>, <em>streamlimit: int = 10000</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="headerlink" href="#cfei.smap.SmapHttpInterface.fetch_readings_intertwined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return a single stream.</p>
+<p>Query the sMAP archiver for all readings between <cite>start</cite> and <cite>end</cite> for
+all streams that satisfy the <cite>where</cite> condition. The results are
+intertwined.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime</em>) – Query start time.</li>
+<li><strong>end</strong> (<em>datetime</em>) – Query end time.</li>
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Intertwined series.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.Series</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When <code class="code docutils literal"><span class="pre">limit</span></code> is equal to -1 the returned
+streams are actually limited to one million readings (possibly
+depending on the server implementation). Using a higher value for
+<code class="code docutils literal"><span class="pre">limit</span></code> works correctly.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.fetch_uuids">
+<code class="descname">fetch_uuids</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Set[uuid.UUID]<a class="headerlink" href="#cfei.smap.SmapHttpInterface.fetch_uuids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for UUIDs.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their UUIDs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The UUIDs.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set(UUID)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.post_data">
+<code class="descname">post_data</code><span class="sig-paren">(</span><em>stream: pandas.core.series.Series</em>, <em>uuid: uuid.UUID</em>, <em>source_name: str</em>, <em>path: str</em>, <em>metadata: typing.Union[typing.Dict</em>, <em>NoneType] = None</em>, <em>properties: typing.Union[typing.Dict</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapHttpInterface.post_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post new readings to a stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>streams</strong> (<em>pd.Series</em>) – New readings.</li>
+<li><strong>uuid</strong> (<em>UUID</em>) – Stream’s UUID.</li>
+<li><strong>source_name</strong> (<em>str</em>) – Stream’s source name.</li>
+<li><strong>path</strong> (<em>str</em>) – Stream’s path.</li>
+<li><strong>metadata</strong> (<em>dict</em>) – Stream’s metadata</li>
+<li><strong>properties</strong> (<em>dict</em>) – Stream’s properties</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.post_readings">
+<code class="descname">post_readings</code><span class="sig-paren">(</span><em>readings: typing.Union[typing.Dict[uuid.UUID, pandas.core.series.Series], typing.Tuple[uuid.UUID, pandas.core.series.Series]]</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapHttpInterface.post_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post new readings to existing streams.</p>
+<p>The specified streams’ paths will be fetched and cached before posting
+the readings. All streams must, therefore, exist beforehand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>readings</strong> (<em>dict|pd.Series</em>) – Either a dictionary {UUID: series} or a pair (UUID, pd.Series).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapHttpInterface.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>where: typing.Union[str, NoneType], callback: typing.Callable[[uuid.UUID, pandas.core.series.Series], typing.Awaitable[NoneType]], timeout: int = 30</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapHttpInterface.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to sMAP republish interface.</p>
+<p>The callback function will be called with new readings as soon as the
+archiver will republish them.</p>
+<p>Args:
+:param where: Query text.
+:type where: str
+:param callback: Callback to process new readings.
+:type callback: SeriesCallbackType
+:param timeout: Connection timeout in seconds.
+:type timeout: int</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cfei.smap.SmapInterface">
+<em class="property">class </em><code class="descclassname">cfei.smap.</code><code class="descname">SmapInterface</code><span class="sig-paren">(</span><em>transport_interface: cfei.smap.transport.TransportInterface</em>, <em>cache: bool = False</em>, <em>loose_validation: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>An interface to sMAP protocol.</p>
+<p>Each object has a local cache for metadata, so querying multiple times for
+a stream results in only one query for its metadata.</p>
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.fetch_everything">
+<code class="descname">fetch_everything</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapInterface.fetch_everything" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for everything.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return everything.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; metadata.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, everything)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.fetch_latest_readings">
+<code class="descname">fetch_latest_readings</code><span class="sig-paren">(</span><em>where: str</em>, <em>limit: int = 1</em>, <em>streamlimit: int = 10000</em>, <em>instant: typing.Union[datetime.datetime</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, pandas.core.series.Series]<a class="headerlink" href="#cfei.smap.SmapInterface.fetch_latest_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return by UUID.</p>
+<p>Query the sMAP archiver for all the readings before current or
+specified instant for all streams that satisfy the <cite>where</cite> condition.
+The results are returned by UUID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+<li><strong>instant</strong> (<em>datetime</em>) – Instant (if <cite>None</cite>, current instant is used)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mapping UUID -&gt; values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict(UUID, pd.Series)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.fetch_metadata">
+<code class="descname">fetch_metadata</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapInterface.fetch_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for metadata.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their metadata.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; metadata.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, object)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.fetch_properties">
+<code class="descname">fetch_properties</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, typing.Any]<a class="headerlink" href="#cfei.smap.SmapInterface.fetch_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for properties.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A mapping UUID -&gt; properties.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict(UUID, object)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.fetch_raw">
+<code class="descname">fetch_raw</code><span class="sig-paren">(</span><em>query: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#cfei.smap.SmapInterface.fetch_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for raw query.</p>
+<p>Query the sMAP archiver using a custom query and return.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Raw query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Parsed JSON output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Any</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.fetch_readings">
+<code class="descname">fetch_readings</code><span class="sig-paren">(</span><em>start: datetime.datetime</em>, <em>end: datetime.datetime</em>, <em>where: str</em>, <em>limit: int = -1</em>, <em>streamlimit: int = 10000</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, pandas.core.series.Series]<a class="headerlink" href="#cfei.smap.SmapInterface.fetch_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return by UUID.</p>
+<p>Query the sMAP archiver for all readings between <cite>start</cite> and <cite>end</cite> for
+all streams that satisfy the <cite>where</cite> condition. The results are
+returned by UUID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime</em>) – Query start time.</li>
+<li><strong>end</strong> (<em>datetime</em>) – Query end time.</li>
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mapping UUID -&gt; values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict(UUID, pd.Series)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When <code class="code docutils literal"><span class="pre">limit</span></code> is equal to -1 the returned
+streams are actually limited to one million readings (possibly
+depending on the server implementation). Using a higher value for
+<code class="code docutils literal"><span class="pre">limit</span></code> works correctly.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.fetch_readings_intertwined">
+<code class="descname">fetch_readings_intertwined</code><span class="sig-paren">(</span><em>start: datetime.datetime</em>, <em>end: datetime.datetime</em>, <em>where: str</em>, <em>limit: int = -1</em>, <em>streamlimit: int = 10000</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="headerlink" href="#cfei.smap.SmapInterface.fetch_readings_intertwined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for readings and return a single stream.</p>
+<p>Query the sMAP archiver for all readings between <cite>start</cite> and <cite>end</cite> for
+all streams that satisfy the <cite>where</cite> condition. The results are
+intertwined.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime</em>) – Query start time.</li>
+<li><strong>end</strong> (<em>datetime</em>) – Query end time.</li>
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings (-1 for unlimited)</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Intertwined series.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.Series</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When <code class="code docutils literal"><span class="pre">limit</span></code> is equal to -1 the returned
+streams are actually limited to one million readings (possibly
+depending on the server implementation). Using a higher value for
+<code class="code docutils literal"><span class="pre">limit</span></code> works correctly.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.fetch_uuids">
+<code class="descname">fetch_uuids</code><span class="sig-paren">(</span><em>where: str</em><span class="sig-paren">)</span> &#x2192; typing.Set[uuid.UUID]<a class="headerlink" href="#cfei.smap.SmapInterface.fetch_uuids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query for UUIDs.</p>
+<p>Query the sMAP archiver for all streams that satisfy the <cite>where</cite>
+condition and return their UUIDs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The UUIDs.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set(UUID)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.post_data">
+<code class="descname">post_data</code><span class="sig-paren">(</span><em>stream: pandas.core.series.Series</em>, <em>uuid: uuid.UUID</em>, <em>source_name: str</em>, <em>path: str</em>, <em>metadata: typing.Union[typing.Dict</em>, <em>NoneType] = None</em>, <em>properties: typing.Union[typing.Dict</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapInterface.post_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post new readings to a stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>streams</strong> (<em>pd.Series</em>) – New readings.</li>
+<li><strong>uuid</strong> (<em>UUID</em>) – Stream’s UUID.</li>
+<li><strong>source_name</strong> (<em>str</em>) – Stream’s source name.</li>
+<li><strong>path</strong> (<em>str</em>) – Stream’s path.</li>
+<li><strong>metadata</strong> (<em>dict</em>) – Stream’s metadata</li>
+<li><strong>properties</strong> (<em>dict</em>) – Stream’s properties</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.post_readings">
+<code class="descname">post_readings</code><span class="sig-paren">(</span><em>readings: typing.Union[typing.Dict[uuid.UUID, pandas.core.series.Series], typing.Tuple[uuid.UUID, pandas.core.series.Series]]</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapInterface.post_readings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post new readings to existing streams.</p>
+<p>The specified streams’ paths will be fetched and cached before posting
+the readings. All streams must, therefore, exist beforehand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>readings</strong> (<em>dict|pd.Series</em>) – Either a dictionary {UUID: series} or a pair (UUID, pd.Series).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.SmapInterface.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>where: typing.Union[str, NoneType], callback: typing.Callable[[uuid.UUID, pandas.core.series.Series], typing.Awaitable[NoneType]], timeout: int = 30</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.SmapInterface.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to sMAP republish interface.</p>
+<p>The callback function will be called with new readings as soon as the
+archiver will republish them.</p>
+<p>Args:
+:param where: Query text.
+:type where: str
+:param callback: Callback to process new readings.
+:type callback: SeriesCallbackType
+:param timeout: Connection timeout in seconds.
+:type timeout: int</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="cfei.smap.generate_uuid_as_in_java">
+<code class="descclassname">cfei.smap.</code><code class="descname">generate_uuid_as_in_java</code><span class="sig-paren">(</span><em>source_name: str</em>, <em>path: str</em><span class="sig-paren">)</span> &#x2192; uuid.UUID<a class="headerlink" href="#cfei.smap.generate_uuid_as_in_java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a UUID from source name and path</p>
+<p>This function has the same implementation of the Java library, therefore,
+with same inputs it will generate the same UUID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source_name</strong> (<em>typing.Text</em>) – Source name</li>
+<li><strong>path</strong> (<em>typing.Text</em>) – Path.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A UUID.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">UUID</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="cfei.smap.intertwine_series">
+<code class="descclassname">cfei.smap.</code><code class="descname">intertwine_series</code><span class="sig-paren">(</span><em>serieses: typing.List[pandas.core.series.Series]</em><span class="sig-paren">)</span> &#x2192; pandas.core.series.Series<a class="headerlink" href="#cfei.smap.intertwine_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a list of time-series to a single time-series, such that readings
+are in order</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> (<em>typing.List</em><em>[</em><em>pd.Series</em><em>]</em>) – List of time-series.</li>
+<li><strong>uuids</strong> (<em>typing.List</em><em>[</em><em>UUID</em><em>]</em>) – List of uuids.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new intertwined time-series.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.Series</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cfei.smap.types">
+<span id="reference-for-cfei-smap-types"></span><h2>Reference for <code class="code docutils literal"><span class="pre">cfei.smap.types</span></code><a class="headerlink" href="#module-cfei.smap.types" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="cfei.smap.types.CallbackType">
+<code class="descclassname">cfei.smap.types.</code><code class="descname">CallbackType</code><a class="headerlink" href="#cfei.smap.types.CallbackType" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">typing.Callable</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cfei.smap.types.RawCallbackType">
+<code class="descclassname">cfei.smap.types.</code><code class="descname">RawCallbackType</code><a class="headerlink" href="#cfei.smap.types.RawCallbackType" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">typing.Callable</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cfei.smap.types.SeriesCallbackType">
+<code class="descclassname">cfei.smap.types.</code><code class="descname">SeriesCallbackType</code><a class="headerlink" href="#cfei.smap.types.SeriesCallbackType" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">typing.Callable</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cfei.smap.transport">
+<span id="reference-for-cfei-smap-transport"></span><h2>Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport</span></code><a class="headerlink" href="#module-cfei.smap.transport" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cfei.smap.transport.TransportInterface">
+<em class="property">class </em><code class="descclassname">cfei.smap.transport.</code><code class="descname">TransportInterface</code> &#x2192; None<a class="headerlink" href="#cfei.smap.transport.TransportInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Interface for transport layer.</p>
+<dl class="method">
+<dt id="cfei.smap.transport.TransportInterface.fetch">
+<code class="descname">fetch</code><span class="sig-paren">(</span><em>query: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#cfei.smap.transport.TransportInterface.fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch data by query.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<em>str</em>) – Query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Query result.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">typing.Text</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.transport.TransportInterface.post_data">
+<code class="descname">post_data</code><span class="sig-paren">(</span><em>data: str</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.transport.TransportInterface.post_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post new data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>str</em>) – data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.transport.TransportInterface.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>where: typing.Union[str, NoneType], callback: typing.Callable[str, typing.Awaitable[NoneType]], timeout: int = 30</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.transport.TransportInterface.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to republish interface.</p>
+<p>The callback function will be called with new readings as soon as the
+archiver will republish them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>where</strong> (<em>str</em>) – Query text.</li>
+<li><strong>callback</strong> (<a class="reference internal" href="#cfei.smap.types.CallbackType" title="cfei.smap.types.CallbackType"><em>CallbackType</em></a>) – Callback to process new readings.</li>
+<li><strong>timeout</strong> (<em>int</em>) – Connection timeout in seconds.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.transport.TransportInterface.synchronous_fetch">
+<code class="descname">synchronous_fetch</code><span class="sig-paren">(</span><em>query: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#cfei.smap.transport.TransportInterface.synchronous_fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synchronously fetch data by query.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<em>str</em>) – Query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Query result.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">typing.Text</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cfei.smap.transport.aiohttp">
+<span id="reference-for-cfei-smap-transport-aiohttp"></span><h2>Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport.aiohttp</span></code><a class="headerlink" href="#module-cfei.smap.transport.aiohttp" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cfei.smap.transport.aiohttp.AiohttpTransportInterface">
+<em class="property">class </em><code class="descclassname">cfei.smap.transport.aiohttp.</code><code class="descname">AiohttpTransportInterface</code><span class="sig-paren">(</span><em>url: str</em>, <em>key: str = ''</em>, <em>encoding: str = 'utf-8'</em>, <em>buffer_size: int = 65536</em>, <em>max_concurrent_requests: int = 10</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.transport.aiohttp.AiohttpTransportInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cfei.smap.transport.TransportInterface" title="cfei.smap.transport.TransportInterface"><code class="xref py py-class docutils literal"><span class="pre">cfei.smap.transport.TransportInterface</span></code></a></p>
+<p>Interface for HTTP transport layer.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 1.1: </span>This class was previously called <cite>cfei.smap.transport.HttpTransportInterface</cite>.</p>
+</div>
+<dl class="method">
+<dt id="cfei.smap.transport.aiohttp.AiohttpTransportInterface.fetch">
+<code class="descname">fetch</code><span class="sig-paren">(</span><em>query: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#cfei.smap.transport.aiohttp.AiohttpTransportInterface.fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch data by query.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<em>str</em>) – Query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Query result.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">JsonType</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.transport.aiohttp.AiohttpTransportInterface.post_data">
+<code class="descname">post_data</code><span class="sig-paren">(</span><em>data: str</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.transport.aiohttp.AiohttpTransportInterface.post_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Post new data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>str</em>) – data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.transport.aiohttp.AiohttpTransportInterface.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>where: typing.Union[str, NoneType], callback: typing.Callable[str, typing.Awaitable[NoneType]], timeout: int = 30</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.transport.aiohttp.AiohttpTransportInterface.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe to republish interface.</p>
+<p>The callback function will be called with new readings as soon as the
+archiver will republish them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>where</strong> (<em>str</em>) – Query text.</li>
+<li><strong>callback</strong> (<a class="reference internal" href="#cfei.smap.types.CallbackType" title="cfei.smap.types.CallbackType"><em>CallbackType</em></a>) – Callback to process new readings.</li>
+<li><strong>timeout</strong> (<em>int</em>) – Connection timeout in seconds.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cfei.smap.transport.aiohttp.AiohttpTransportInterface.synchronous_fetch">
+<code class="descname">synchronous_fetch</code><span class="sig-paren">(</span><em>query: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#cfei.smap.transport.aiohttp.AiohttpTransportInterface.synchronous_fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synchronously fetch data by query.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<em>str</em>) – Query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Query result.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">JsonType</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cfei.smap.cache">
+<span id="reference-for-cfei-smap-cache"></span><h2>Reference for <code class="code docutils literal"><span class="pre">cfei.smap.cache</span></code><a class="headerlink" href="#module-cfei.smap.cache" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cfei.smap.cache.load_raw_from_cache">
+<code class="descclassname">cfei.smap.cache.</code><code class="descname">load_raw_from_cache</code><span class="sig-paren">(</span><em>query: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#cfei.smap.cache.load_raw_from_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load raw content from local cache</p>
+<p>Cache file name is generated from the entire query. If such file exists,
+it is loaded using <cite>pickle</cite> library.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>query</strong> (<em>str</em>) – Query.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Raw data.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>RuntimeError</strong> – If cache loading failed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="cfei.smap.cache.load_readings_from_cache">
+<code class="descclassname">cfei.smap.cache.</code><code class="descname">load_readings_from_cache</code><span class="sig-paren">(</span><em>start: datetime.datetime</em>, <em>end: datetime.datetime</em>, <em>where: str</em>, <em>limit: int</em>, <em>streamlimit: int</em><span class="sig-paren">)</span> &#x2192; typing.Dict[uuid.UUID, pandas.core.series.Series]<a class="headerlink" href="#cfei.smap.cache.load_readings_from_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load readings from local cache</p>
+<p>Cache file name is generated from the where clause. If such file exists,
+it is loaded using <cite>pickle</cite> library. Loading fails if:</p>
+<ul class="simple">
+<li>Data contained in cache does not cover the entire period [start, end];</li>
+<li>Data contained in cache had different <cite>limit</cite> or <cite>streamlimit</cite> arguments.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime</em>) – Query start time.</li>
+<li><strong>end</strong> (<em>datetime</em>) – Query end time.</li>
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A mapping UUID -&gt; values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dict(UUID, pd.Series)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>RuntimeError</strong> – If cache loading failed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="cfei.smap.cache.save_raw_to_cache">
+<code class="descclassname">cfei.smap.cache.</code><code class="descname">save_raw_to_cache</code><span class="sig-paren">(</span><em>data: str</em>, <em>query: str</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.cache.save_raw_to_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save raw data to local cache</p>
+<p>Cache file name is generated from the entire query.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<em>str</em>) – Raw data.</li>
+<li><strong>query</strong> (<em>str</em>) – Query.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="cfei.smap.cache.save_readings_to_cache">
+<code class="descclassname">cfei.smap.cache.</code><code class="descname">save_readings_to_cache</code><span class="sig-paren">(</span><em>data: typing.Dict[uuid.UUID, typing.Any], start: datetime.datetime, end: datetime.datetime, where: str, limit: int, streamlimit: int</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#cfei.smap.cache.save_readings_to_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save readings to local cache</p>
+<p>Cache file name is generated from the where clause.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<em>dict</em><em>(</em><em>UUID</em><em>, </em><em>typing.Any</em><em>)</em>) – Readings.</li>
+<li><strong>start</strong> (<em>datetime</em>) – Query start time.</li>
+<li><strong>end</strong> (<em>datetime</em>) – Query end time.</li>
+<li><strong>where</strong> (<em>str</em>) – Query <cite>WHERE</cite> condition.</li>
+<li><strong>limit</strong> (<em>int</em>) – Maximum number of readings</li>
+<li><strong>streamlimit</strong> (<em>int</em>) – Maximum number of streams</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="timezones.html" class="btn btn-neutral float-right" title="Converting to and from Timezones" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="library.html" class="btn btn-neutral" title="CFEI sMAP Python Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Center for Energy Informatics, University of Southern Denmark.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

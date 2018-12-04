@@ -1,0 +1,485 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Index &mdash; CFEI sMAP Python Library 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="#"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CFEI sMAP Python Library 1.2.0 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CFEI sMAP Python Library
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library.html">CFEI sMAP Python Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="library.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="library.html#general-instructions">General Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#important-note-about-timezones">Important Note about Timezones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#fetching-data">Fetching Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="library.html#note">Note</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#posting-data">Posting Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#subscribing-to-real-time-data">Subscribing to real-time data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#enabling-local-cache">Enabling Local Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#note-about-asyncio">Note about <em>asyncio</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#command-line-utility">Command Line Utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap">Reference for <code class="code docutils literal"><span class="pre">cfei.smap</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.types">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.types</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.transport">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.transport.aiohttp">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport.aiohttp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.cache">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.cache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Converting to and from Timezones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internals.html">Internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#caching">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html#schema-validation">Schema Validation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CFEI sMAP Python Library</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Index</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.transport.aiohttp.AiohttpTransportInterface">AiohttpTransportInterface (class in cfei.smap.transport.aiohttp)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.types.CallbackType">CallbackType (in module cfei.smap.types)</a>
+</li>
+      <li><a href="reference.html#module-cfei.smap">cfei.smap (module)</a>
+</li>
+      <li><a href="reference.html#module-cfei.smap.cache">cfei.smap.cache (module)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#module-cfei.smap.transport">cfei.smap.transport (module)</a>
+</li>
+      <li><a href="reference.html#module-cfei.smap.transport.aiohttp">cfei.smap.transport.aiohttp (module)</a>
+</li>
+      <li><a href="reference.html#module-cfei.smap.types">cfei.smap.types (module)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.transport.aiohttp.AiohttpTransportInterface.fetch">fetch() (cfei.smap.transport.aiohttp.AiohttpTransportInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.transport.TransportInterface.fetch">(cfei.smap.transport.TransportInterface method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.fetch_everything">fetch_everything() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.fetch_everything">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.fetch_everything">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.fetch_latest_readings">fetch_latest_readings() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.fetch_latest_readings">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.fetch_latest_readings">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.fetch_metadata">fetch_metadata() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.fetch_metadata">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.fetch_metadata">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.fetch_properties">fetch_properties() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.fetch_properties">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.fetch_properties">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.fetch_raw">fetch_raw() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.fetch_raw">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.fetch_raw">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.fetch_readings">fetch_readings() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.fetch_readings">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.fetch_readings">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.fetch_readings_intertwined">fetch_readings_intertwined() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.fetch_readings_intertwined">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.fetch_readings_intertwined">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.fetch_uuids">fetch_uuids() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.fetch_uuids">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.fetch_uuids">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.generate_uuid_as_in_java">generate_uuid_as_in_java() (in module cfei.smap)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.intertwine_series">intertwine_series() (in module cfei.smap)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.cache.load_raw_from_cache">load_raw_from_cache() (in module cfei.smap.cache)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.cache.load_readings_from_cache">load_readings_from_cache() (in module cfei.smap.cache)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.post_data">post_data() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.post_data">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.post_data">(cfei.smap.SmapInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.transport.TransportInterface.post_data">(cfei.smap.transport.TransportInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.transport.aiohttp.AiohttpTransportInterface.post_data">(cfei.smap.transport.aiohttp.AiohttpTransportInterface method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.post_readings">post_readings() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.post_readings">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.post_readings">(cfei.smap.SmapInterface method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.types.RawCallbackType">RawCallbackType (in module cfei.smap.types)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.cache.save_raw_to_cache">save_raw_to_cache() (in module cfei.smap.cache)</a>
+</li>
+      <li><a href="reference.html#cfei.smap.cache.save_readings_to_cache">save_readings_to_cache() (in module cfei.smap.cache)</a>
+</li>
+      <li><a href="reference.html#cfei.smap.types.SeriesCallbackType">SeriesCallbackType (in module cfei.smap.types)</a>
+</li>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface">SmapAiohttpInterface (class in cfei.smap)</a>
+</li>
+      <li><a href="reference.html#cfei.smap.SmapHttpInterface">SmapHttpInterface (class in cfei.smap)</a>
+</li>
+      <li><a href="reference.html#cfei.smap.SmapInterface">SmapInterface (class in cfei.smap)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.SmapAiohttpInterface.subscribe">subscribe() (cfei.smap.SmapAiohttpInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.SmapHttpInterface.subscribe">(cfei.smap.SmapHttpInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.SmapInterface.subscribe">(cfei.smap.SmapInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.transport.TransportInterface.subscribe">(cfei.smap.transport.TransportInterface method)</a>
+</li>
+        <li><a href="reference.html#cfei.smap.transport.aiohttp.AiohttpTransportInterface.subscribe">(cfei.smap.transport.aiohttp.AiohttpTransportInterface method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference.html#cfei.smap.transport.aiohttp.AiohttpTransportInterface.synchronous_fetch">synchronous_fetch() (cfei.smap.transport.aiohttp.AiohttpTransportInterface method)</a>
+
+      <ul>
+        <li><a href="reference.html#cfei.smap.transport.TransportInterface.synchronous_fetch">(cfei.smap.transport.TransportInterface method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference.html#cfei.smap.transport.TransportInterface">TransportInterface (class in cfei.smap.transport)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Center for Energy Informatics, University of Southern Denmark.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

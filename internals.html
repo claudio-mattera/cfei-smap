@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Internals &mdash; CFEI sMAP Python Library 1.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="CFEI sMAP Python Library 1.2.0 documentation" href="index.html"/>
+        <link rel="prev" title="Converting to and from Timezones" href="timezones.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CFEI sMAP Python Library
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="library.html">CFEI sMAP Python Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="library.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="library.html#general-instructions">General Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#important-note-about-timezones">Important Note about Timezones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#fetching-data">Fetching Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="library.html#note">Note</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#posting-data">Posting Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#subscribing-to-real-time-data">Subscribing to real-time data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#enabling-local-cache">Enabling Local Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library.html#note-about-asyncio">Note about <em>asyncio</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="library.html#command-line-utility">Command Line Utility</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap">Reference for <code class="code docutils literal"><span class="pre">cfei.smap</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.types">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.types</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.transport">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.transport.aiohttp">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.transport.aiohttp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-cfei.smap.cache">Reference for <code class="code docutils literal"><span class="pre">cfei.smap.cache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timezones.html">Converting to and from Timezones</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caching">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schema-validation">Schema Validation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CFEI sMAP Python Library</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Internals</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/internals.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="internals">
+<h1>Internals<a class="headerlink" href="#internals" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The library consists of a <cite>SmapInterface</cite> class that defines the main interface over sMAP.
+This class uses an abstract class <cite>TransportInterface</cite> that defines primitives to send and retrieve data over HTTP.
+Splitting the transport implementation from its interface allows to use this library with multiple backends.
+The only supported backend at the moment is the <a class="reference external" href="https://aiohttp.readthedocs.io/">aiohttp</a> library, plus a mockup backend used for testing.</p>
+</div>
+<div class="section" id="caching">
+<h2>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h2>
+<p>The library supports caching time-series and metadata on the local machine, to reduce fetch time, network traffic and server load.
+When a query is executed for the first time, a filename is obtained by hashing its where-clause, and the query results are saved to such file.
+The following times the same query is executed, the results are taken from the local cached file.</p>
+<p>The cache contains also the selected period, so that queries with same where-clause but different periods can use the cache, provided that the requested period is contained in the cached period.
+Other parameters, such as limits, are also stored in cache, and if they do not match, they invalidate the cache.</p>
+<p>Local cache is disabled by default, and can enabled by passing <code class="docutils literal"><span class="pre">cache=True</span></code> to the <code class="docutils literal"><span class="pre">SmapInterface</span></code> constructor.
+The cache directory is obtained from <a class="reference external" href="https://pypi.org/project/appdirs/">appdirs</a> library, and is usually located at:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">/home/USERNAME/.cache/sMAP-Python</span></code> on Linux/Unix</li>
+<li><code class="docutils literal"><span class="pre">C:\\Users\\USERNAME\\AppData\\Local\\Acme\\sMAP-Python\\Cache</span></code> on Windows</li>
+</ul>
+<p>Invalidated cache files are deleted and re-created, but local cache is otherwise never deleted.
+In case it becomes too large, it should be manually deleted.</p>
+</div>
+<div class="section" id="schema-validation">
+<h2>Schema Validation<a class="headerlink" href="#schema-validation" title="Permalink to this headline">¶</a></h2>
+<p>sMAP server returns results through JSON encoding.
+This library optionally checks whether the returned JSON payloads respect the expected <a class="reference external" href="https://json-schema.org/">jsonschema</a>.
+This can be useful to diagnose a faulty server implementation.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="timezones.html" class="btn btn-neutral" title="Converting to and from Timezones" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Center for Energy Informatics, University of Southern Denmark.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
